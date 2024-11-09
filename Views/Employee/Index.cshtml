@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+@{
+    var employees = ViewBag.Employees as List<Employee>;
+}
+
+<h2>Employee List</h2>
+
+<table class="table">
+    
+    <tbody>
+        @if (employees?.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>EmpId</th>
+                        <th>Name</th>
+                        <th>Job</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var emp in employees)
+                    {
+                        <tr>
+                            <td>@emp.EmpId</td>
+                            <td>@emp.Name</td>
+                            <td>@emp.Job</td>
+                            <td>@emp.Salary</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                No record found!
+            </div>
+        }
+    </tbody>
+</table>
